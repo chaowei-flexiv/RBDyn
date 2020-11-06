@@ -22,7 +22,7 @@ add_project_dependency(Boost REQUIRED COMPONENTS system)
 set(SOURCES common.cpp urdf.cpp to_urdf.cpp yaml.cpp to_yaml.cpp)
 set(HEADERS RBDyn/parsers/api.h RBDyn/parsers/common.h RBDyn/parsers/urdf.h RBDyn/parsers/yaml.h)
 
-add_library(RBDynParsers SHARED ${SOURCES} ${HEADERS})
+add_library(RBDynParsers STATIC ${SOURCES} ${HEADERS})
 add_library(RBDyn::Parsers ALIAS RBDynParsers)
 target_include_directories(RBDynParsers PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include> $<INSTALL_INTERFACE:include>)
 target_link_libraries(RBDynParsers PUBLIC RBDyn tinyxml2::tinyxml2 yaml-cpp Boost::boost)
